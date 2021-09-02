@@ -1,0 +1,1 @@
+# image_terraform_kubectl_bootstrap
