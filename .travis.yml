@@ -4,7 +4,8 @@ services:
   - docker
 
 before_install:
+  - KUBECTL_VERSION=$(cat kubectl_version)
   - echo $DOCKER_PASSWORD | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t nctiggy/image_terraform_kubectl .
+  - docker build --build-arg KUBECTL_VERSION=$KUBECTL_VERSION -t nctiggy/image_terraform_kubectl .
 script:
   - docker push nctiggy/image_terraform_kubectl
